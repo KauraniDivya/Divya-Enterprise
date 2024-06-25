@@ -10,7 +10,7 @@ import oilbarrel from "./images/oil-barrel.png"
 const Products = () => {
     return(
         <>
-             <section class="section category" id="courses" aria-label="category">
+             <section class="section category" id="products" aria-label="category">
         <div class="container">
 
           <p class="section-subtitle">Our Products</p>

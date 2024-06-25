@@ -7,8 +7,9 @@ import shape3 from "./images/about-shape-3.png"
 const About = () =>{
     return (
         <>
+        <div >
              <section class="section about" id="about" aria-label="about">
-        <div class="container">
+        <div class="container mt-20" >
 
           <figure class="about-banner">
 
@@ -19,7 +20,7 @@ const About = () =>{
 
 
             <img src={shape1}  loading="lazy" alt=""
-              class="shape about-shape-2 max-w-lg ml-2" />
+              class="shape about-shape-2 max-w-lg lg:max-w-3xl lg:ml-0  ml-2" />
 
             <img src={shape3} width="722" height="528" loading="lazy" alt=""
               class="shape about-shape-3" />
@@ -67,7 +68,7 @@ const About = () =>{
 
         </div>
       </section>
-      <h2 class="h2 section-title">
+      <h2 class="h2 section-title" >
         About Our  <span class="span">Company</span>
       </h2>
       <div class="relative overflow-x-auto mx-auto max-w-6xl shadow-lg p-4 bg-white mt-10 mb-20 rounded-lg lg:mb-72">
@@ -171,6 +172,7 @@ const About = () =>{
                 </tr>
             </tbody>
         </table>
+    </div>
     </div>
         </>
     )

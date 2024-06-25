@@ -9,13 +9,13 @@ import shape2 from "./images/video-shape-2.png"
 const Choose = () =>{
     return(
         <>
-            <section class="video has-bg-image " aria-label="video"
+            <section class="video has-bg-image" aria-label="video"
         style={{
-            backgroundImage: `url(${bg})`,
-        }}>
+            backgroundImage: `url(${bg})`
+        }} id="choose">
         <div class="container">
-          <div class="choose-us">
-          <p class="section-subtitle pt-20">Why Choose Us?</p>
+          <div class="choose-us pt-40">
+          <p class="section-subtitle">Why Choose Us?</p>
 
           <h2 class="h2 section-title">Why Choose Our Products</h2></div>
           <div class="video-card mt-20 lg:mt-0">

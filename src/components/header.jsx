@@ -1,21 +1,23 @@
 import React from "react"
-import logo from "./images/logo.svg"
+import logo from "./images/logo.png"
 
 const Header = () =>{
     return(
         <>
-            <header class="header" data-header>
+            <header class="header" data-header style={{position:"sticky"}}>
     <div class="container">
 
-      <a href="#" class="logo">
-        <img src={logo} width="162" height="50" alt="Divya Enterprise logo" />
+      <a href="#home" class="logo flex justify-between gap-8">
+        <img src={logo} width="30" height="30" alt="Divya Enterprise logo" />
+        <p className="text-5xl mt-4">Divya Enterprise</p>
       </a>
 
       <nav class="navbar" data-navbar>
 
         <div class="wrapper">
-          <a href="#" class="logo">
-            <img src={logo} width="162" height="50" alt="Divya Enterprise logo" />
+          <a href="#home" class="logo">
+          <img src={logo} width="30" height="30" alt="Divya Enterprise logo" />
+          <p className="text-5xl mt-4">Divya Enterprise</p>
           </a>
 
           <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
@@ -34,15 +36,15 @@ const Header = () =>{
           </li>
 
           <li class="navbar-item">
-            <a href="#courses" class="navbar-link" data-nav-link>Products</a>
+            <a href="#products" class="navbar-link" data-nav-link>Products</a>
           </li>
 
           <li class="navbar-item">
-            <a href="#blog" class="navbar-link" data-nav-link>Why Choose Us?</a>
+            <a href="#choose" class="navbar-link" data-nav-link>Why Choose Us?</a>
           </li>
 
           <li class="navbar-item">
-            <a href="#visit" class="navbar-link" data-nav-link>Contact</a>
+            <a href="#visit" class="navbar-link" data-nav-link>Visit Us</a>
           </li>
 
         </ul>

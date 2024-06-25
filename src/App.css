@@ -1681,7 +1681,7 @@ button.buy{
   position: relative;
   border: none;
   outline: none;
-  background-color: black;
+  background-color: #000000;
   color: white;
   font-size: 0.6em;
   padding-left: 6.9em;

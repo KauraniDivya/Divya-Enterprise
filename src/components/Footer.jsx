@@ -1,6 +1,6 @@
 import React from "react";
 import bg from "./images/footer-bg.png"
-import logo from "./images/logo.svg"
+import logo from "./images/logo.png"
 
 const Footer = () =>{
     return(
@@ -12,8 +12,9 @@ const Footer = () =>{
 
     <div class="footer-brand">
 
-      <a href="#" class="logo">
-        <img src={logo} width="162" height="50" alt="Divya Enterprise logo" />
+    <a href="#home" class="logo flex gap-4">
+        <img src={logo} width="30" height="30" alt="Divya Enterprise logo" />
+        <p className="text-5xl mt-4 text-white">Divya Enterprise</p>
       </a>
 
       <p class="footer-brand-text">
@@ -47,28 +48,22 @@ const Footer = () =>{
       </li>
 
       <li>
-        <a href="#" class="footer-link">About</a>
+        <a href="#about" class="footer-link">About</a>
       </li>
 
       <li>
-        <a href="#" class="footer-link">Courses</a>
+        <a href="#products" class="footer-link">Products</a>
       </li>
 
       <li>
-        <a href="#" class="footer-link">Instructor</a>
+        <a href="#choose" class="footer-link">Why Choose Us?</a>
       </li>
 
       <li>
-        <a href="#" class="footer-link">Events</a>
+        <a href="#visit" class="footer-link">Visit Us</a>
       </li>
 
-      <li>
-        <a href="#" class="footer-link">Instructor Profile</a>
-      </li>
-
-      <li>
-        <a href="#" class="footer-link">Purchase Guide</a>
-      </li>
+      
 
     </ul>
 
@@ -79,29 +74,20 @@ const Footer = () =>{
       </li>
 
       <li>
-        <a href="#" class="footer-link">Contact Us</a>
+        <a href="#about" class="footer-link">About</a>
       </li>
 
       <li>
-        <a href="#" class="footer-link">Gallery</a>
+        <a href="#products" class="footer-link">Products</a>
       </li>
 
       <li>
-        <a href="#" class="footer-link">News & Articles</a>
+        <a href="#choose" class="footer-link">Why Choose Us?</a>
       </li>
 
       <li>
-        <a href="#" class="footer-link">FAQ's</a>
+        <a href="#visit" class="footer-link">Visit Us</a>
       </li>
-
-      <li>
-        <a href="#" class="footer-link">Sign In/Registration</a>
-      </li>
-
-      <li>
-        <a href="#" class="footer-link">Coming Soon</a>
-      </li>
-
     </ul>
 
     <div class="footer-list">
@@ -165,7 +151,7 @@ const Footer = () =>{
   <div class="container">
 
     <p class="copyright">
-      Copyright 2022 All Rights Reserved by <a href="#" class="copyright-link">codewithsadee</a>
+      Copyright 2022 All Rights Reserved by <a href="#" class="copyright-link">Divya Enterprise</a>
     </p>
 
   </div>
