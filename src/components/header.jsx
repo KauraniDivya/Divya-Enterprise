@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "./images/logo.png";
 
-const Header = () => {
+const DEHeader = () => {
   const phone = "+919016539191";
 
   const handleWhatsAppClick = (phone, productName) => {
@@ -88,4 +88,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default DEHeader;
