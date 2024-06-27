@@ -57,25 +57,27 @@ const ProductDetails = () => {
                 transition={{ duration: 0.5 }}
                 className="mb-4 relative"
               >
-                <ReactImageMagnify {...{
-  smallImage: {
-    alt: product.name,
-    isFluidWidth: true,
-    src: product.images[selectedImage],
-  },
-  largeImage: {
-    src: product.images[selectedImage],
-    width: 1200,
-    height: 1800,
-  },
-  enlargedImageContainerDimensions: {
-    width: 600,
-    height: 900,
-  },
-  isHintEnabled: true,
-  shouldHideHintAfterFirstActivation: false,
-  enlargedImagePosition: "beside",
-}} />
+                <ReactImageMagnify
+                  {...{
+                    smallImage: {
+                      alt: product.name,
+                      isFluidWidth: true,
+                      src: product.images[selectedImage],
+                    },
+                    largeImage: {
+                      src: product.images[selectedImage],
+                      width: 1200,
+                      height: 1800,
+                    },
+                    enlargedImageContainerDimensions: {
+                      width: "150%",
+                      height: "150%",
+                    },
+                    isHintEnabled: true,
+                    shouldHideHintAfterFirstActivation: false,
+                    enlargedImagePosition: "beside",
+                  }}
+                />
                 <div className="absolute top-4 right-4 flex space-x-2">
                   <motion.button
                     whileHover={{ scale: 1.1 }}
