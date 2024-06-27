@@ -1,185 +1,576 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { products } from './Products';  // Import the products array
+import ReactImageMagnify from "react-image-magnify";
+
+import { motion } from "framer-motion";
+import { products } from './Products';
+import {
+  FaStar, FaStarHalfAlt, FaRegStar, FaHeart, FaShare, FaTruck, FaBox,
+  FaShieldAlt, FaExchangeAlt, FaInfoCircle, FaCheck, FaQuestionCircle,
+  FaShoppingCart, FaBolt, FaTag, FaPercentage, FaGift, FaCreditCard,
+  FaUserAlt, FaCommentAlt, FaThumbsUp, FaCamera, FaVideo, FaChartBar,
+  FaClipboardList, FaMapMarkerAlt, FaClock, FaAward, FaCertificate,
+  FaRecycle, FaLeaf, FaIndustry, FaFlask, FaBalanceScale, FaThermometerHalf,
+  FaCompress, FaTint, FaFireAlt, FaCog, FaBarcode, FaGlobe, FaShip, FaTruckLoading
+} from 'react-icons/fa';
 
 const ProductDetails = () => {
   const { id } = useParams();
   const product = products.find(p => p.id === parseInt(id));
+  const [selectedImage, setSelectedImage] = useState(0);
+  const [quantity, setQuantity] = useState(1);
+  const [activeTab, setActiveTab] = useState("description");
 
   if (!product) {
     return <div>Product not found</div>;
   }
 
+  const renderStars = (rating) => {
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      if (i <= rating) {
+        stars.push(<FaStar key={i} className="text-yellow-400" />);
+      } else if (i - 0.5 <= rating) {
+        stars.push(<FaStarHalfAlt key={i} className="text-yellow-400" />);
+      } else {
+        stars.push(<FaRegStar key={i} className="text-yellow-400" />);
+      }
+    }
+    return stars;
+  };
+
   return (
-    <div className="font-sans dark:bg-[#1e232e] bg-white mt-28">
-    <div className="p-6 lg:max-w-7xl max-w-4xl mx-auto">
-      <div className="grid items-start grid-cols-1 lg:grid-cols-5 gap-12 shadow-[0_2px_10px_-3px_#f96b004d] dark:shadow-[0_2px_10px_-3px_rgba(255,255,255,0.3)] p-6 h-[30rem]">
-        <div className="lg:col-span-3 w-full lg:sticky top-0 text-center">
-
-          <div className="px-4 py-10 rounded-xl shadow-[0_2px_10px_-3px_#f96b004d] dark:shadow-[0_2px_10px_-3px_rgba(255,255,255,0.3)] flex justify-center items-center align-middle h-[27rem] ">
-            <img src={product.image} width={500} height={500} alt="Product" className=" w-auto rounded object-fit h-auto " />
-
-          </div>
-
-
-        </div>
-
-        <div className="lg:col-span-2 flex-col items-center align-middle">
-          <h2 className="text-2xl font-extrabold text-[#333] dark:text-white">{product.name}</h2>
-          <div className="flex flex-wrap gap-4 mt-4">
-            <p className="text-[#333] text-3xl font-bold dark:text-white">{product.description}</p>
-            {/* <p className="text-gray-400 text-lg"> <span className="text-sm ml-1">Tax included</span></p> */}
-          </div>
-          <div className="flex flex-wrap gap-4 mt-4">
-            <a href="/"><p className="text-blue-400 text-lg font-normal">Click to view more</p></a>
-          </div>
-
-<div className="flex flex-wrap gap-4 mt-10">
-<button type="button" className="px-2.5 py-1.5 bg-gray-100 text-xs text-gray-800 rounded-md flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20px" fill="currentColor" viewBox="0 0 512 512">
-                  <path d="M453.332 85.332c0 38.293-31.039 69.336-69.332 69.336s-69.332-31.043-69.332-69.336C314.668 47.043 345.707 16 384 16s69.332 31.043 69.332 69.332zm0 0" data-original="#000000" />
-                  <path d="M384 170.668c-47.063 0-85.332-38.273-85.332-85.336C298.668 38.273 336.938 0 384 0s85.332 38.273 85.332 85.332c0 47.063-38.27 85.336-85.332 85.336zM384 32c-29.418 0-53.332 23.938-53.332 53.332 0 29.398 23.914 53.336 53.332 53.336s53.332-23.938 53.332-53.336C437.332 55.938 413.418 32 384 32zm69.332 394.668C453.332 464.957 422.293 496 384 496s-69.332-31.043-69.332-69.332c0-38.293 31.039-69.336 69.332-69.336s69.332 31.043 69.332 69.336zm0 0" data-original="#000000" />
-                  <path d="M384 512c-47.063 0-85.332-38.273-85.332-85.332 0-47.063 38.27-85.336 85.332-85.336s85.332 38.273 85.332 85.336c0 47.059-38.27 85.332-85.332 85.332zm0-138.668c-29.418 0-53.332 23.938-53.332 53.336C330.668 456.063 354.582 480 384 480s53.332-23.938 53.332-53.332c0-29.398-23.914-53.336-53.332-53.336zM154.668 256c0 38.293-31.043 69.332-69.336 69.332C47.043 325.332 16 294.293 16 256s31.043-69.332 69.332-69.332c38.293 0 69.336 31.039 69.336 69.332zm0 0" data-original="#000000" />
-                  <path d="M85.332 341.332C38.273 341.332 0 303.062 0 256s38.273-85.332 85.332-85.332c47.063 0 85.336 38.27 85.336 85.332s-38.273 85.332-85.336 85.332zm0-138.664C55.914 202.668 32 226.602 32 256s23.914 53.332 53.332 53.332c29.422 0 53.336-23.934 53.336-53.332s-23.914-53.332-53.336-53.332zm0 0" data-original="#000000" />
-                  <path d="M135.703 245.762c-7.426 0-14.637-3.864-18.562-10.774-5.825-10.218-2.239-23.254 7.98-29.101l197.95-112.852c10.218-5.867 23.253-2.281 29.1 7.977 5.825 10.218 2.24 23.254-7.98 29.101L146.238 242.965a21.195 21.195 0 0 1-10.535 2.797zm197.93 176c-3.586 0-7.211-.899-10.54-2.797L125.142 306.113c-10.22-5.824-13.801-18.86-7.977-29.101 5.8-10.239 18.856-13.844 29.098-7.977l197.953 112.852c10.219 5.824 13.8 18.86 7.976 29.101-3.945 6.91-11.156 10.774-18.558 10.774zm0 0" data-original="#000000" />
-                </svg><span className="text-xl ml-4">Share Product</span>
-              </button>
-          </div>
-          <div className="flex flex-wrap gap-4 mt-10">
-            <button type="button" className="min-w-full px-4 py-2.5 border border-[#d26638] bg-transparent hover:bg-gray-50 text-[#d26638] text-sm font-semibold rounded">Request to Callback</button>
-          </div>
-          <div className="flex flex-wrap gap-4 mt-5">
-            <button type="button" className="min-w-full px-4 py-3 bg-[#d26638] hover:bg-[#d26638] text-white text-sm font-semibold rounded">Send Inquiry</button>
-          </div>
-        </div>
-      </div>
-
-      <div className=" shadow-[0_2px_10px_-3px_#f96b004d] dark:shadow-[0_2px_10px_-3px_rgba(255,255,255,0.3)] p-6 lg:mt-16 mt-[25rem]">
-        <h3 className="text-lg font-bold text-[#333] dark:text-white">Product information</h3>
-        <ul className="mt-6 space-y-6 text-[#333] dark:text-white">
-          <li className="text-sm">Minimum Order Quantity <span className="ml-4 float-right">LAPTOP</span></li>
-          <li className="text-sm">Density <span className="ml-4 float-right">16 BG</span></li>
-          <li className="text-sm">Sample Available <span className="ml-4 float-right">1000 BG</span></li>
-          <li className="text-sm">Packaging Details <span className="ml-4 float-right">INTEL CORE I7-12700H</span></li>
-          <li className="text-sm">Price <span className="ml-4 float-right">2.3 - 4.7 GHz</span></li>
-          <li className="text-sm">Sample Policy <span className="ml-4 float-right">16.0</span></li>
-        </ul>
-      </div>
-
-
-    </div>
-    <section id="contact" className="overflow-hidden py-16 md:py-20 lg:py-28">
-    <div className="container">
-      <div className="-mx-4 flex flex-wrap justify-center">
-        <div className="w-[90%] px-4 ">
-          <div className="mb-12 rounded-sm bg-white px-8 py-11 shadow-[0_2px_10px_-3px_#f96b004d] dark:shadow-[0_2px_10px_-3px_rgba(255,255,255,0.3)] dark:bg-[#1e232e] sm:p-[55px] lg:mb-5 lg:px-8 xl:p-[55px]" data-wow-delay=".15s">
-            <h2 className="mb-3 text-2xl text-center font-bold text-black dark:text-white sm:text-3xl lg:text-2xl xl:text-3xl">
-              Enter Buying Requirement Details
-            </h2>
-            
-            <form>
-<div className="-mx-4 flex flex-wrap">
-  <div className="w-full px-4">
-    <div className="mb-8">
-      <label htmlFor="product" className="mb-3 block text-sm font-medium text-dark dark:text-white">
-        Select Product to Get a Quotation
-      </label>
-      <select
-        name="product"
-        id="product"
-        className="border-stroke w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none focus:border-white dark:border-transparent dark:bg-[#3f3f3f73] dark:text-body-color-dark dark:shadow-two dark:focus:border-white dark:focus:shadow-none"
-      >
-        <option value="">Select a product</option>
-        <option value="product1">Product 1</option>
-        <option value="product2">Product 2</option>
-        <option value="product3">Product 3</option>
-      </select>
-    </div>
-  </div>
-
-  <div className="w-full px-4">
-    <div className="mb-8">
-      <label htmlFor="details" className="mb-3 block text-sm font-medium text-dark dark:text-white">
-        Additional Details
-      </label>
-      <textarea
-        name="details"
-        id="details"
-        rows={5}
-        placeholder="To get accurate quotes, enter usage, quantity required, and special requests if any."
-        className="border-stroke w-full resize-none rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none focus:border-white dark:border-transparent dark:bg-[#3f3f3f73] dark:text-body-color-dark dark:shadow-two dark:focus:border-white dark:focus:shadow-none"
-      ></textarea>
-    </div>
-  </div>
-
-  <div className="w-full px-4">
-    <div className="mb-8">
-      <button
-        type="button"
-        className="rounded-sm bg-[#d26638] hover:bg-[#d26638]  px-4 py-3 text-base font-medium  text-white shadow-submit duration-300 dark:shadow-submit-dark"
-      >
-       + Add Attachments
-      </button>
-      <p className="text-sm text-dark dark:text-white mt-2">Note: File size below 5MB.</p>
-    </div>
-  </div>
-
-  <div className="w-full px-4 md:w-1/2">
-    <div className="mb-8">
-      <label htmlFor="email" className="mb-3 block text-sm font-medium text-dark dark:text-white">
-        Your Email
-      </label>
-      <input
-        type="email"
-        name="email"
-        placeholder="Enter your email"
-        className="border-stroke w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none focus:border-white dark:border-transparent dark:bg-[#3f3f3f73] dark:text-body-color-dark dark:shadow-two dark:focus:border-white dark:focus:shadow-none"
-      />
-    </div>
-  </div>
-
-  <div className="w-full px-4 md:w-1/2">
-    <div className="mb-8">
-      <label htmlFor="mobile" className="mb-3 block text-sm font-medium text-dark dark:text-white">
-        Your Mobile Number
-      </label>
-      <div className="flex">
-        <select
-          name="country-code"
-          className="border-stroke rounded-sm border bg-[#f8f8f8] px-4 py-3 text-base text-body-color outline-none focus:border-white dark:border-transparent dark:bg-[#3f3f3f73] dark:text-body-color-dark dark:shadow-two dark:focus:border-white dark:focus:shadow-none"
+    <div className="bg-gray-100 min-h-screen">
+      <div className="container mx-auto px-4 py-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="bg-white rounded-lg shadow-lg overflow-hidden"
         >
-          <option value="+91">+91</option>
-          <option value="+1">+1</option>
-          <option value="+44">+44</option>
-          {/* <!-- Add more country codes as needed --> */}
-        </select>
-        <input
-          type="text"
-          name="mobile"
-          placeholder="Enter your mobile number"
-          className="border-stroke w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none focus:border-white dark:border-transparent dark:bg-[#3f3f3f73] dark:text-body-color-dark dark:shadow-two dark:focus:border-white dark:focus:shadow-none ml-2"
-        />
-      </div>
-    </div>
-  </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-6">
+            {/* Product Images */}
+            <div>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+                className="mb-4 relative"
+              >
+                <ReactImageMagnify {...{
+  smallImage: {
+    alt: product.name,
+    isFluidWidth: true,
+    src: product.images[selectedImage],
+  },
+  largeImage: {
+    src: product.images[selectedImage],
+    width: 1200,
+    height: 1800,
+  },
+  enlargedImageContainerDimensions: {
+    width: 600,
+    height: 900,
+  },
+  isHintEnabled: true,
+  shouldHideHintAfterFirstActivation: false,
+  enlargedImagePosition: "beside",
+}} />
+                <div className="absolute top-4 right-4 flex space-x-2">
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="bg-white p-2 rounded-full shadow-md text-red-500 hover:bg-red-500 hover:text-white transition duration-300"
+                  >
+                    <FaHeart />
+                  </motion.button>
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="bg-white p-2 rounded-full shadow-md text-blue-500 hover:bg-blue-500 hover:text-white transition duration-300"
+                  >
+                    <FaShare />
+                  </motion.button>
+                </div>
+              </motion.div>
+              <div className="flex space-x-2 overflow-x-auto pb-2">
+                {product.images.map((image, index) => (
+                  <motion.img
+                    key={index}
+                    src={image}
+                    alt={`${product.name} - ${index + 1}`}
+                    className={`w-20 h-20 object-cover rounded-md cursor-pointer ${
+                      selectedImage === index ? 'border-2 border-blue-500' : ''
+                    }`}
+                    onClick={() => setSelectedImage(index)}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  />
+                ))}
+              </div>
+            </div>
+            {/* Product Details */}
+            <div>
+              <motion.h1
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="text-3xl font-bold mb-4"
+              >
+                {product.name}
+              </motion.h1>
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="flex items-center mb-4"
+              >
+                <div className="flex mr-2">
+                  {renderStars(product.rating)}
+                </div>
+                <span className="text-gray-600">{product.reviewCount} reviews</span>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="text-3xl font-bold mb-4"
+              >
+                ${product.price.toFixed(2)}
+              </motion.div>
 
-  <div className="w-full px-4">
-    <button
-      type="submit"
-      className="rounded-sm bg-[#d26638] hover:bg-[#d26638] px-4 py-3 text-base font-medium text-white shadow-submit duration-300 dark:shadow-submit-dark"
-    >
-      Submit
-    </button>
-  </div>
-</div>
-</form>
+              {/* Color options */}
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+                className="mb-6"
+              >
+                <h3 className="font-semibold mb-2">Color:</h3>
+                <div className="flex space-x-2">
+                  {product.colors.map((color) => (
+                    <motion.div
+                      key={color}
+                      className={`w-8 h-8 rounded-full cursor-pointer border-2 border-gray-300`}
+                      style={{ backgroundColor: color }}
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                    ></motion.div>
+                  ))}
+                </div>
+              </motion.div>
 
+              {/* Size options */}
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+                className="mb-6"
+              >
+                <h3 className="font-semibold mb-2">Size:</h3>
+                <div className="flex space-x-2">
+                  {product.sizes.map((size) => (
+                    <motion.button
+                      key={size}
+                      className="px-4 py-2 border border-gray-300 rounded-md hover:border-blue-500 hover:bg-blue-50 transition duration-300"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      {size}
+                    </motion.button>
+                  ))}
+                </div>
+              </motion.div>
+
+              {/* Quantity selector */}
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.7 }}
+                className="mb-6"
+              >
+                <h3 className="font-semibold mb-2">Quantity:</h3>
+                <div className="flex items-center space-x-4">
+                  <button
+                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                    className="px-3 py-1 border border-gray-300 rounded-md hover:bg-gray-100"
+                  >
+                    -
+                  </button>
+                  <span>{quantity}</span>
+                  <button
+                    onClick={() => setQuantity(quantity + 1)}
+                    className="px-3 py-1 border border-gray-300 rounded-md hover:bg-gray-100"
+                  >
+                    +
+                  </button>
+                </div>
+              </motion.div>
+
+              {/* Add to Cart and Buy Now buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.8 }}
+                className="flex space-x-4 mb-6"
+              >
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex-1 bg-yellow-400 text-white py-3 px-6 rounded-md hover:bg-yellow-500 transition duration-300"
+                >
+                  <FaShoppingCart className="inline-block mr-2" /> Add to Cart
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex-1 bg-orange-500 text-white py-3 px-6 rounded-md hover:bg-orange-600 transition duration-300"
+                >
+                  <FaBolt className="inline-block mr-2" /> Buy Now
+                </motion.button>
+              </motion.div>
+
+              {/* Delivery and return info */}
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.9 }}
+                className="border-t border-gray-200 pt-6"
+              >
+                <div className="flex items-center mb-2">
+                  <FaTruck className="text-green-500 mr-2" />
+                  <span>Free Delivery</span>
+                </div>
+                <div className="flex items-center mb-2">
+                  <FaExchangeAlt className="text-blue-500 mr-2" />
+                  <span>30-Day Returns</span>
+                </div>
+                <div className="flex items-center">
+                  <FaShieldAlt className="text-gray-500 mr-2" />
+                  <span>2-Year Warranty</span>
+                </div>
+              </motion.div>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
+        </motion.div>
+
+        {/* Product Information Tabs */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 1 }}
+          className="bg-white rounded-lg shadow-lg p-6 mt-8"
+        >
+          <div className="flex border-b border-gray-200">
+            <button
+              className={`py-2 px-4 font-semibold ${
+                activeTab === "description" ? "text-blue-500 border-b-2 border-blue-500" : "text-gray-500"
+              }`}
+              onClick={() => setActiveTab("description")}
+            >
+              Description
+            </button>
+            <button
+              className={`py-2 px-4 font-semibold ${
+                activeTab === "specifications" ? "text-blue-500 border-b-2 border-blue-500" : "text-gray-500"
+              }`}
+              onClick={() => setActiveTab("specifications")}
+            >
+              Specifications
+            </button>
+            <button
+              className={`py-2 px-4 font-semibold ${
+                activeTab === "features" ? "text-blue-500 border-b-2 border-blue-500" : "text-gray-500"
+              }`}
+              onClick={() => setActiveTab("features")}
+            >
+              Features
+            </button>
+          </div>
+          <div className="mt-4">
+            {activeTab === "description" && (
+              <p className="text-gray-700">{product.description}</p>
+            )}
+            {activeTab === "specifications" && (
+              <ul className="list-disc list-inside">
+                {product.specifications.map((spec, index) => (
+                  <li key={index} className="text-gray-700">{spec}</li>
+                ))}
+              </ul>
+            )}
+            {activeTab === "features" && (
+              <ul className="grid grid-cols-2 gap-4">
+                {product.features.map((feature, index) => (
+                  <li key={index} className="flex items-center text-gray-700">
+                    <FaCheck className="text-green-500 mr-2" /> {feature}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </motion.div>
+
+        {/* Customer Reviews */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 1.1 }}
+          className="bg-white rounded-lg shadow-lg p-6 mt-8"
+        >
+          <h2 className="text-2xl font-bold mb-4">Customer Reviews</h2>
+          <div className="flex items-center mb-4">
+            <div className="text-4xl font-bold mr-4">{product.rating.toFixed(1)}</div>
+            <div>
+              <div className="flex mb-1">{renderStars(product.rating)}</div>
+              <div className="text-sm text-gray-600">Based on {product.reviewCount} reviews</div>
+            </div>
+          </div>
+          <div className="space-y-4">
+            {product.reviews.map((review, index) => (
+              <div key={index} className="border-b border-gray-200 pb-4">
+                <div className="flex items-center mb-2">
+                  <FaUserAlt className="text-gray-400 mr-2" />
+                  <span className="font-semibold">{review.user}</span>
+                </div>
+                <div className="flex mb-2">
+                  {renderStars(review.rating)}
+                </div>
+                <p className="text-gray-700">{review.comment}</p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+      {/* Related Products */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 1.2 }}
+          className="bg-white rounded-lg shadow-lg p-6 mt-8"
+        >
+          <h2 className="text-2xl font-bold mb-4">Related Products</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {products.slice(0, 4).map((relatedProduct) => (
+              <motion.div
+                key={relatedProduct.id}
+                whileHover={{ scale: 1.05 }}
+                className="bg-white rounded-lg shadow-md overflow-hidden"
+              >
+                <img
+                  src={relatedProduct.images[0]}
+                  alt={relatedProduct.name}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-4">
+                  <h3 className="font-semibold text-lg mb-2">{relatedProduct.name}</h3>
+                  <div className="flex items-center justify-between">
+                    <span className="text-gray-700">${relatedProduct.price.toFixed(2)}</span>
+                    <div className="flex items-center">
+                      <FaStar className="text-yellow-400 mr-1" />
+                      <span>{relatedProduct.rating.toFixed(1)}</span>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Product Video */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 1.3 }}
+          className="bg-white rounded-lg shadow-lg p-6 mt-8"
+        >
+          <h2 className="text-2xl font-bold mb-4">Product Video</h2>
+          <div className="aspect-w-16 aspect-h-9">
+            <iframe
+              src={product.videoUrl}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full rounded-lg"
+            ></iframe>
+          </div>
+        </motion.div>
+
+        {/* Frequently Asked Questions */}
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5, delay: 1.4 }}
+  className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl shadow-xl p-8 mt-12"
+>
+  <h2 className="text-3xl font-bold mb-6 text-indigo-800">Frequently Asked Questions</h2>
+  <div className="space-y-6">
+    {product.faqs.map((faq, index) => (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, delay: index * 0.1 }}
+        className="bg-white rounded-lg shadow-md p-6"
+      >
+        <h3 className="font-semibold text-xl mb-3 text-indigo-700">{faq.question}</h3>
+        <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
+      </motion.div>
+    ))}
   </div>
+</motion.div>
+
+{/* Certifications and Awards */}
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5, delay: 1.5 }}
+  className="bg-gradient-to-r from-green-50 to-teal-50 rounded-xl shadow-xl p-8 mt-12"
+>
+  <h2 className="text-3xl font-bold mb-6 text-teal-800">Certifications and Awards</h2>
+  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+    {product.certifications.map((cert, index) => (
+      <motion.div
+        key={index}
+        className="flex flex-col items-center bg-white rounded-lg shadow-md p-4"
+        whileHover={{ scale: 1.05, boxShadow: "0 10px 20px rgba(0,0,0,0.1)" }}
+      >
+        <FaCertificate className="text-5xl text-teal-500 mb-3" />
+        <span className="text-center font-medium text-gray-800">{cert}</span>
+      </motion.div>
+    ))}
+  </div>
+</motion.div>
+
+{/* Environmental Impact */}
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5, delay: 1.6 }}
+  className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl shadow-xl p-8 mt-12"
+>
+  <h2 className="text-3xl font-bold mb-6 text-emerald-800">Environmental Impact</h2>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <motion.div className="bg-white rounded-lg shadow-md p-6 flex items-start" whileHover={{ scale: 1.03 }}>
+      <FaLeaf className="text-emerald-500 text-4xl mr-4 mt-1" />
+      <div>
+        <h3 className="font-semibold text-xl mb-2 text-emerald-700">Eco-Friendly Production</h3>
+        <p className="text-gray-700 leading-relaxed">Our manufacturing process is designed to minimize environmental impact, using sustainable practices throughout our supply chain.</p>
+      </div>
+    </motion.div>
+    <motion.div className="bg-white rounded-lg shadow-md p-6 flex items-start" whileHover={{ scale: 1.03 }}>
+      <FaRecycle className="text-blue-500 text-4xl mr-4 mt-1" />
+      <div>
+        <h3 className="font-semibold text-xl mb-2 text-blue-700">Recyclable Packaging</h3>
+        <p className="text-gray-700 leading-relaxed">We use 100% recyclable materials for our product packaging, reducing waste and promoting a circular economy.</p>
+      </div>
+    </motion.div>
+  </div>
+</motion.div>
+
+{/* Technical Specifications */}
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5, delay: 1.7 }}
+  className="bg-gradient-to-r from-gray-50 to-slate-50 rounded-xl shadow-xl p-8 mt-12"
+>
+  <h2 className="text-3xl font-bold mb-6 text-slate-800">Technical Specifications</h2>
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    {[
+      { icon: FaThermometerHalf, color: "text-red-500", label: "Temperature Range", value: product.temperatureRange },
+      { icon: FaCompress, color: "text-blue-500", label: "Pressure Tolerance", value: product.pressureTolerance },
+      { icon: FaTint, color: "text-blue-300", label: "Viscosity", value: product.viscosity },
+      { icon: FaFireAlt, color: "text-orange-500", label: "Flash Point", value: product.flashPoint },
+      { icon: FaCog, color: "text-gray-500", label: "Compatibility", value: product.compatibility },
+      { icon: FaBalanceScale, color: "text-green-500", label: "Specific Gravity", value: product.specificGravity },
+    ].map((spec, index) => (
+      <motion.div
+        key={index}
+        className="bg-white rounded-lg shadow-md p-4 flex items-center"
+        whileHover={{ scale: 1.05 }}
+      >
+        <spec.icon className={`${spec.color} text-3xl mr-4`} />
+        <div>
+          <h3 className="font-semibold text-lg text-gray-800">{spec.label}</h3>
+          <p className="text-gray-700">{spec.value}</p>
+        </div>
+      </motion.div>
+    ))}
+  </div>
+</motion.div>
+
+{/* Application Industries */}
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5, delay: 1.8 }}
+  className="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl shadow-xl p-8 mt-12"
+>
+  <h2 className="text-3xl font-bold mb-6 text-indigo-800">Application Industries</h2>
+  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+    {product.industries.map((industry, index) => (
+      <motion.div
+        key={index}
+        className="bg-white rounded-lg shadow-md p-4 flex flex-col items-center text-center"
+        whileHover={{ scale: 1.1, boxShadow: "0 10px 20px rgba(0,0,0,0.1)" }}
+      >
+        <FaIndustry className="text-5xl text-indigo-500 mb-3" />
+        <span className="font-medium text-gray-800">{industry}</span>
+      </motion.div>
+    ))}
+  </div>
+</motion.div>
+
+{/* Product Support */}
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5, delay: 1.9 }}
+  className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl shadow-xl p-8 mt-12"
+>
+  <h2 className="text-3xl font-bold mb-6 text-cyan-800">Product Support</h2>
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <motion.button
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      className="flex items-center justify-center bg-gradient-to-r from-blue-500 to-blue-600 text-white py-4 px-8 rounded-lg text-lg font-semibold shadow-lg hover:from-blue-600 hover:to-blue-700 transition duration-300"
+    >
+      <FaQuestionCircle className="mr-3 text-2xl" /> Technical Support
+    </motion.button>
+    <motion.button
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      className="flex items-center justify-center bg-gradient-to-r from-green-500 to-green-600 text-white py-4 px-8 rounded-lg text-lg font-semibold shadow-lg hover:from-green-600 hover:to-green-700 transition duration-300"
+    >
+      <FaCommentAlt className="mr-3 text-2xl" /> Live Chat
+    </motion.button>
+  </div>
+</motion.div>
+      </div>
+
+      {/* Floating Action Buttons */}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 2 }}
+        className="fixed bottom-4 right-4 flex flex-col space-y-2"
+      >
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className="bg-blue-500 text-white p-3 rounded-full shadow-lg hover:bg-blue-600"
+        >
+          <FaQuestionCircle className="text-xl" />
+        </motion.button>
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className="bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600"
+        >
+          <FaCommentAlt className="text-xl" />
+        </motion.button>
+      </motion.div>
+    </div>
   );
 };
 
