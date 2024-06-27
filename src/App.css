@@ -422,7 +422,7 @@ body {
   #HERO
 \*-----------------------------------*/
 
-.hero { padding-block-start: calc(var(--section-padding) + 80px); }
+/* .hero { padding-block-start: calc(var(--section-padding) + 80px); } */
 
 .hero .container {
   display: grid;
@@ -439,7 +439,7 @@ body {
 .hero .btn { margin-inline: auto; }
 
 .hero-banner {
-  display: grid;
+  /* display: grid; */
   grid-template-columns: 1fr 0.8fr;
   align-items: flex-start;
   gap: 30px;
@@ -1098,8 +1098,8 @@ body {
 
   .header .btn {
     display: flex;
-    padding: 10px 30px;
-    margin-inline: 20px;
+    padding: 6px 20px;
+    /* margin-inline: 20px; */
   }
 
 
@@ -1108,7 +1108,7 @@ body {
    * HERO
    */
 
-  .hero { padding-block-start: calc(var(--section-padding) + 90px); }
+  /* .hero { padding-block-start: calc(var(--section-padding) + 90px); } */
 
   .hero .container { gap: 50px; }
 
@@ -1343,7 +1343,7 @@ body {
    * HERO
    */
 
-  .hero { padding-block-start: calc(var(--section-padding) + 120px); }
+  /* .hero { padding-block-start: calc(var(--section-padding) + 120px); } */
 
   .hero .container { gap: 80px; }
 
