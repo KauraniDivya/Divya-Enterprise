@@ -291,7 +291,7 @@ const Products = () => {
                 <div className="p-4">
                   <img
                     className="rounded-xl ml-2 mt-2"
-                    src={product.image}
+                    src={product.images[0]}
                     style={{ height: "250px", minWidth: "full" }}
                     alt="Product"
                   />
