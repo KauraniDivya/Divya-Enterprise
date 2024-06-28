@@ -11,6 +11,7 @@ import Map from './components/Map';
 import Footer from './components/Footer';
 import ProductDetails from './components/ProductDetails';
 import DEHeader from './components/header';
+// import CardSection from './components/DemoCard';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/" element={
               <>
                 <Hero />
+                {/* <CardSection /> */}
                 <Products />
                 <About />
                 <Choose />
