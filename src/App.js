@@ -33,7 +33,7 @@ function App() {
               </>
             } />
             <Route path="/product/:id" element={<ProductDetails />} />
-            <Route path="/admin" element={<Admin />} />
+            <Route path="/admindinesh" element={<Admin />} />
           </Routes>
         </article>
       </main>
