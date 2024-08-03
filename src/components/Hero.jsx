@@ -5,7 +5,7 @@ import shape2 from "./images/hero-shape-2.png"
 const Hero = () => {
     return (
         <>
-            <section className="section hero has-bg-image max-h-screen mt-24" id="home" aria-label="home">
+            <section className="section hero has-bg-image max-h-screen" id="home" aria-label="home">
                 <div className="container">
                     <div className="hero-content">
                         <h1 className="h1 lg:text-8xl md:text-8xl text-6xl section-title text-center">

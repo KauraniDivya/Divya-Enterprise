@@ -17,6 +17,7 @@ import {
   FaWhatsapp,
 } from "react-icons/fa";
 import { Helmet } from "react-helmet";
+import ContactFormPopup from "./ContactFormPopup"; // Import the new component
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -26,6 +27,7 @@ const ProductDetails = () => {
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState("description");
   const [isShareMenuOpen, setIsShareMenuOpen] = useState(false);
+  const [isContactFormOpen, setIsContactFormOpen] = useState(false); // New state for the popup
 
   if (!product) {
     return <div>Product not found</div>;
@@ -78,45 +80,45 @@ const ProductDetails = () => {
         <meta property="twitter:description" content={product.description.slice(0, 160)} />
         <meta property="twitter:image" content={product.images[0]} />
       </Helmet>
-    <div className="bg-gray-100 min-h-screen">
-      <div className="container mx-auto px-4 py-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="bg-white rounded-lg shadow-lg overflow-hidden"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-6">
-            {/* Product Images */}
-            <div>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
-                className="mb-4 relative z-1"
-              >
-                <ReactImageMagnify
-                  {...{
-                    smallImage: {
-                      alt: product.name,
-                      isFluidWidth: true,
-                      src: product.images[selectedImage],
-                    },
-                    largeImage: {
-                      src: product.images[selectedImage],
-                      width: 1200,
-                      height: 1800,
-                    },
-                    enlargedImageContainerDimensions: {
-                      width: "150%",
-                      height: "150%",
-                    },
-                    isHintEnabled: true,
-                    shouldHideHintAfterFirstActivation: false,
-                    enlargedImagePosition: "beside",
-                  }}
-                />
-                <div className="absolute top-4 right-4 flex space-x-2">
+      <div className="bg-gray-100 min-h-screen">
+        <div className="container mx-auto px-4 py-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="bg-white rounded-lg shadow-lg overflow-hidden"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-6">
+              {/* Product Images */}
+              <div className="relative">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                  className="mb-4"
+                >
+                  <ReactImageMagnify
+                    {...{
+                      smallImage: {
+                        alt: product.name,
+                        isFluidWidth: true,
+                        src: product.images[selectedImage],
+                      },
+                      largeImage: {
+                        src: product.images[selectedImage],
+                        width: 1200,
+                        height: 1800,
+                      },
+                      enlargedImageContainerDimensions: {
+                        width: "150%",
+                        height: "150%",
+                      },
+                      isHintEnabled: true,
+                      shouldHideHintAfterFirstActivation: false,
+                      enlargedImagePosition: "beside",
+                    }}
+                  />
+                               <div className="absolute top-4 right-4 flex space-x-2">
                   <motion.div className="relative">
                     <motion.button
                       whileHover={{ scale: 1.1 }}
@@ -181,20 +183,22 @@ const ProductDetails = () => {
               </a>
               {/* Add to Cart and Buy Now buttons */}
               <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.8 }}
-                className="flex space-x-4 mb-6"
-              >
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex-1 bg-orange-500 mt-5 text-white py-3 px-6 rounded-md hover:bg-orange-600 transition duration-300"
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.8 }}
+                  className="mt-6"
                 >
-                  <FaBolt className="inline-block mr-2" /> Send Inquiry
-                </motion.button>
-              </motion.div>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="w-full bg-orange-500 text-white py-3 px-6 rounded-md hover:bg-orange-600 transition duration-300"
+                    onClick={() => setIsContactFormOpen(true)}
+                  >
+                    <FaBolt className="inline-block mr-2" /> Send Inquiry
+                  </motion.button>
+                </motion.div>
 
+       
               {/* Delivery and return info */}
               <motion.div
                 initial={{ opacity: 0, y: -20 }}
@@ -225,6 +229,10 @@ const ProductDetails = () => {
               </motion.div>
             </div>
           </div>
+          <ContactFormPopup
+        isOpen={isContactFormOpen}
+        onClose={() => setIsContactFormOpen(false)}
+      />
         </motion.div>
 
         {/* Product Information Tabs */}

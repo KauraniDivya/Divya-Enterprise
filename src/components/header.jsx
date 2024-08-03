@@ -29,7 +29,7 @@ const DEHeader = () => {
   }, [isMenuOpen]);
 
   return (
-    <header className={`header z-96 ${isMenuOpen ? 'active' : ''}`} data-header style={{ position: "sticky" }}>
+    <header className={`header z-12 ${isMenuOpen ? 'active' : ''}`} data-header style={{ position: "sticky" }}>
       <div className="container">
         <a href="/" className="logo flex justify-between gap-8">
           <img src={logo} className="w-xl h-20" alt="Divya Enterprise logo" />
@@ -81,7 +81,7 @@ const DEHeader = () => {
           <a href="tel:+919016539191" className="topbar-item link bg-yellow-100 p-5 pr-6 rounded-xl text-xl text-black font-medium" style={{display: "flex"}}>
             {/* <ion-icon name="call-outline" aria-hidden="true" className="w-10 h-8 lg:hidden flex"></ion-icon> */}
             <div className="icon flex">
-              <ion-icon name="call-outline" aria-hidden="true" className="mr-2 w-10 h-10 font-bold mt-4 mr-4"></ion-icon>
+              <ion-icon name="call-outline" aria-hidden="true" className="mr-2 w-10 h-10 font-bold mt-6 mr-4"></ion-icon>
               <span className="span lg:flex hidden">+91 9016539191</span>
             </div>          
           </a>
