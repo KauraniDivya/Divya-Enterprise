@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import toast from 'react-hot-toast';
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -69,13 +69,13 @@ const ContactForm = () => {
             product: '',
             message: ''
           });
-          alert("Thank you for your message. We'll get back to you soon!");
+          toast.success("Thank you for your message. We'll get back to you soon!");
         } else {
-          alert("There was an error submitting your message. Please try again.");
+          toast.error("There was an error submitting your message. Please try again.");
         }
       } catch (error) {
         console.error('Error submitting form:', error);
-        alert("There was an error submitting your message. Please try again.");
+        toast.error("There was an error submitting your message. Please try again.");
       }
     }
   };

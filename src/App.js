@@ -11,7 +11,7 @@ import Footer from './components/Footer';
 import ProductDetails from './components/ProductDetails';
 import DEHeader from './components/header';
 import ContactForm from './components/ContactForm';
-// import CardSection from './components/DemoCard';
+import  { Toaster } from "react-hot-toast";
 
 function App() {
   return (
@@ -39,6 +39,25 @@ function App() {
       <a href="#top" className="back-top-btn" aria-label="back top top" data-back-top-btn>
         <ion-icon name="chevron-up" aria-hidden="true"></ion-icon>
       </a>
+      <Toaster
+          position="top-center"
+          reverseOrder={false}
+          gutter={8}
+          containerClassName=""
+          containerStyle={{ zIndex: "9999999999" }} // Ensure the container has a high z-index
+          toastOptions={{
+            className: "",
+            duration: 5000,
+            style: {
+              background: "white",
+              color: "black",
+              fontSize: "16px",
+            },
+            success: {
+              duration: 3000,
+            },
+          }}
+        />
     </Router>
   );
 }
