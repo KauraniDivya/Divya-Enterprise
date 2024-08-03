@@ -29,7 +29,7 @@ const About = () =>{
 
           <div class="about-content">
 
-            <p class="section-subtitle">About Us</p>
+            <p class="section-subtitle lg:mt-0 mt-12">About Us</p>
 
             <h2 class="h2 section-title">
                <span class="span">Decades</span> of Trading Excellence

@@ -6,11 +6,11 @@ import Products from './components/Products';
 
 import Hero from "./components/Hero";
 import Choose from './components/Choose';
-import Statistics from './components/Statistics';
 import Map from './components/Map';
 import Footer from './components/Footer';
 import ProductDetails from './components/ProductDetails';
 import DEHeader from './components/header';
+import ContactForm from './components/ContactForm';
 // import CardSection from './components/DemoCard';
 
 function App() {
@@ -27,8 +27,8 @@ function App() {
                 <Products />
                 <About />
                 <Choose />
-                <Statistics />
                 <Map />
+                <ContactForm />
               </>
             } />
             <Route path="/product/:id" element={<ProductDetails />} />
