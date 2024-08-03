@@ -12,6 +12,7 @@ import ProductDetails from './components/ProductDetails';
 import DEHeader from './components/header';
 import ContactForm from './components/ContactForm';
 import  { Toaster } from "react-hot-toast";
+import Admin from './components/Admin';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
               </>
             } />
             <Route path="/product/:id" element={<ProductDetails />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
         </article>
       </main>
