@@ -107,7 +107,7 @@ const products = [
   },
   {
     id: 6,
-    description: "Industrial-grade solvent for cleaning, degreasing, and various chemical applications.",
+    description: "It is used in high-speed diesel engines, such as those in railroad locomotives, trucks, and automobiles. ",
     name: "Distillate Oil",
     images: [product6],
     icon: "⚙️",

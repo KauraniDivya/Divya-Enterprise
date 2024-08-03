@@ -16,7 +16,7 @@ const Hero = () => {
                         We have brought to you a large variety of premium quality industrial solvents. Our offerings have great consistency, accurate proportion, maximum purity and effectiveness.
 </p>
 
-                        <a href="#courses" className="btn has-before">
+                        <a href="#products" className="btn has-before">
                             <span className="span">Find Products</span>
                             <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
                         </a>
