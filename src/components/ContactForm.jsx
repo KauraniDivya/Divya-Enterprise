@@ -47,18 +47,36 @@ const ContactForm = () => {
     return Object.keys(tempErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      console.log("Form submitted:", formData);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        product: '',
-        message: ''
-      });
-      alert("Thank you for your message. We'll get back to you soon!");
+      try {
+        const response = await fetch('http://localhost:5000/api/contact/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+  
+        const data = await response.json();
+  
+        if (data.success) {
+          setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            product: '',
+            message: ''
+          });
+          alert("Thank you for your message. We'll get back to you soon!");
+        } else {
+          alert("There was an error submitting your message. Please try again.");
+        }
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        alert("There was an error submitting your message. Please try again.");
+      }
     }
   };
 
