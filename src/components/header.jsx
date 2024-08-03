@@ -79,10 +79,10 @@ const DEHeader = () => {
 
         <div className="header-actions">
           <a href="tel:+919016539191" className="topbar-item link bg-yellow-100 p-5 pr-6 rounded-xl text-xl text-black font-medium" style={{display: "flex"}}>
-            <ion-icon name="call-outline" aria-hidden="true" className="w-10 h-8 lg:hidden"></ion-icon>
-            <div className="icon lg:flex hidden">
-              <ion-icon name="call-outline" aria-hidden="true" className="mr-2 w-8 h-8 font-bold"></ion-icon>
-              <span className="span">+91 9016539191</span>
+            {/* <ion-icon name="call-outline" aria-hidden="true" className="w-10 h-8 lg:hidden flex"></ion-icon> */}
+            <div className="icon flex">
+              <ion-icon name="call-outline" aria-hidden="true" className="mr-2 w-10 h-10 font-bold mt-4 mr-4"></ion-icon>
+              <span className="span lg:flex hidden">+91 9016539191</span>
             </div>          
           </a>
 

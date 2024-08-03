@@ -11,87 +11,78 @@ import product6 from "./images/product-6.png";
 const products = [
   {
     id: 1,
-    name: "Condonation Oil",
+    name: "Condonson Oil",
     description: "Premium base oil with excellent viscosity and thermal stability, used to enhance engine and machinery performance. This high-quality oil is designed to provide superior lubrication and protection for a wide range of industrial applications.",
-    price: 49.99,
-    rating: 4.5,
-    reviewCount: 128,
     images: [product1],
-    colors: ["#FFD700", "#C0C0C0", "#CD7F32"],
-    sizes: ["1L", "5L", "20L", "200L"],
-   
     icon: "🔧",
-   
-    Use: "40 cSt at 40°C",
-    Quantity: "220°C",
+    Use: "Paint, Engine lubrication",
+    Quantity: "20,000 l",
     PackType: "Tanker or Barrel",
-    Density: "0.88 g/cm³",
+    Density: "0.72 g/cm³",
     industries: [
       "Automotive",
       "Manufacturing",
       "Marine",
       "Power Generation",
-      "Mining",
-      "Agriculture"
+      "Heavy Equipment",
+      "Oil & Gas"
     ],
   },
   {
     id: 2,
     name: "Furnace Oil",
     description: "High-efficiency fuel designed for industrial furnaces and boilers, providing consistent heat generation and optimal combustion performance.",
- 
     images: [product2],
-   
     icon: "🔥",
-    Use: "40 cSt at 40°C",
-    Quantity: "220°C",
+    Use: "Industrial heating, Boiler",
+    Quantity: "200 l - 20,000 l",
     PackType: "Tanker or Barrel",
-    Density: "0.88 g/cm³",
+    Density: "0.95 g/cm³",
     industries: [
       "Steel Manufacturing",
       "Glass Production",
       "Cement Industry",
-      "Food Processing",
-      "Textile Industry",
-      "Chemical Manufacturing"
+      "Power Plants",
+      "Petrochemical",
+      "Paper & Pulp"
     ],
   },
   {
     id: 3,
-    name: "Mix Hydrocarbon Oil",
+    name: "Mix Hydrocarbon Oil (MHO)",
     description: "Versatile oil blend suitable for various industrial applications, providing dependable lubrication.",
     images: [product3],
     icon: "🔬",
-    Use: "40 cSt at 40°C",
-    Quantity: "220°C",
-    PackType: "Tanker or Barrel",
-    Density: "0.88 g/cm³",
+    Use: "Multi-purpose lubricant",
+    Quantity: "Tanker load",
+    PackType: "Tanker",
+    Density: "0.81 g/cm³",
     industries: [
-      "Steel Manufacturing",
-      "Glass Production",
-      "Cement Industry",
-      "Food Processing",
-      "Textile Industry",
-      "Chemical Manufacturing"
+      "Metalworking",
+      "Plastics",
+      "Rubber Manufacturing",
+      "Textile",
+      "Printing",
+      "Woodworking"
     ],
   },
   {
     id: 4,
-    name: "MTO",
+    name: "Mineral Turpentine Oil (MTO)",
     description: "Mineral Turpentine Oil (MTO) used in chemical processes, manufacturing, and as a solvent for paints and coatings.",
     images: [product4],
     icon: "🧪",
-    Use: "40 cSt at 40°C",
-    Quantity: "220°C",
+    Use: "Paint solvent",
+    Quantity: "200 l - 20,000 l",
     PackType: "Tanker or Barrel",
-    Density: "0.88 g/cm³",
+    Density: "0.775 g/cm³",
     industries: [
-      "Steel Manufacturing",
-      "Glass Production",
-      "Cement Industry",
-      "Food Processing",
-      "Textile Industry",
-      "Chemical Manufacturing"
+      "Paint & Coatings",
+      "Adhesives",
+      "Cleaning Products",
+      "Pharmaceuticals",
+      "Electronics",
+      "Automotive"
     ]
   },
   {
@@ -100,17 +91,17 @@ const products = [
     description: "Industrial-grade solvent for cleaning, degreasing, and various chemical applications.",
     images: [product5],
     icon: "🧼",
-    Use: "40 cSt at 40°C",
-    Quantity: "220°C",
+    Use: "Degreasing agent",
+    Quantity: "200 l - 20,000 l",
     PackType: "Tanker or Barrel",
-    Density: "0.88 g/cm³",
+    Density: "0.91 g/cm³",
     industries: [
-      "Steel Manufacturing",
-      "Glass Production",
-      "Cement Industry",
-      "Food Processing",
-      "Textile Industry",
-      "Chemical Manufacturing"
+      "Automotive",
+      "Aerospace",
+      "Electronics",
+      "Metal Fabrication",
+      "Industrial Cleaning",
+      "Chemical Processing"
     ]
   },
   {
@@ -119,17 +110,17 @@ const products = [
     name: "Distillate Oil",
     images: [product6],
     icon: "⚙️",
-    Use: "40 cSt at 40°C",
-    Quantity: "220°C",
+    Use: "Fuel blend component",
+    Quantity: "200 l - 20,000 l",
     PackType: "Tanker or Barrel",
-    Density: "0.88 g/cm³",
+    Density: "0.78 g/cm³",
     industries: [
-      "Steel Manufacturing",
-      "Glass Production",
-      "Cement Industry",
-      "Food Processing",
-      "Textile Industry",
-      "Chemical Manufacturing"
+      "Oil Refining",
+      "Petrochemical",
+      "Power Generation",
+      "Marine",
+      "Agriculture",
+      "Construction"
     ],
   }
 ];
@@ -137,7 +128,7 @@ const products = [
 const relatedProducts = [
   {
     id: 1,
-    name: "Condonation Oil",
+    name: "condonson Oil",
     images: [product1],
   },
   {
