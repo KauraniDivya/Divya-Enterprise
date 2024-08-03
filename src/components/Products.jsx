@@ -139,12 +139,12 @@ const relatedProducts = [
   },
   {
     id: 3,
-    name: "Mix Hydrocarbon Oil",
+    name: "Mix Hydrocarbon Oil (MHO)",
     images: [product3],
   },
   {
     id: 4,
-    name: "MTO",
+    name: "Mineral Turpentine Oil (MTO)",
     images: [product4],
   },
   {
