@@ -14,7 +14,7 @@ export const ProductProvider = ({ children }) => {
     const products = [
         {
           id: 1,
-          name: "Condonation Oil",
+          name: "condonson Oil",
           description: "Premium base oil with excellent viscosity and thermal stability, used to enhance engine and machinery performance.",
           image: product1,
           icon: "🔧"
