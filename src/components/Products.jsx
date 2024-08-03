@@ -128,7 +128,7 @@ const products = [
 const relatedProducts = [
   {
     id: 1,
-    name: "condonson Oil",
+    name: "Condonson Oil",
     images: [product1],
   },
   {
