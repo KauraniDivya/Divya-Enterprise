@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FiShoppingCart, FiStar } from 'react-icons/fi';import product1 from "./images/product-1.png";
+import { FiShoppingCart, FiStar } from 'react-icons/fi';
+import product1 from "./images/product-1.png";
 import product2 from "./images/product-2.png";
 import product3 from "./images/product-3.png";
 import product4 from "./images/product-4.png";
@@ -13,7 +14,7 @@ const products = [
     id: 1,
     name: "Condonson Oil",
     description: "Premium base oil with excellent viscosity and thermal stability, used to enhance engine and machinery performance. This high-quality oil is designed to provide superior lubrication and protection for a wide range of industrial applications.",
-    images: [product1],
+    images: ["https://i.ibb.co/6HCh0BY/adorable-labrador-dog-studio.png"],
     icon: "🔧",
     Use: "Paint, Engine lubrication",
     Quantity: "20,000 l",
