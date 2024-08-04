@@ -44,19 +44,19 @@ const About = () =>{
               <li class="about-item">
                 <ion-icon name="checkmark-done-outline" aria-hidden="true"></ion-icon>
 
-                <span class="span">Expert Trainers</span>
+                <span class="span">High Quality Product Assurance</span>
               </li>
 
               <li class="about-item">
                 <ion-icon name="checkmark-done-outline" aria-hidden="true"></ion-icon>
 
-                <span class="span">Online Remote Learning</span>
+                <span class="span">Decades of Industry Expertise</span>
               </li>
 
               <li class="about-item">
                 <ion-icon name="checkmark-done-outline" aria-hidden="true"></ion-icon>
 
-                <span class="span">Lifetime Access</span>
+                <span class="span">Dedicated Service</span>
               </li>
 
             </ul>
@@ -111,7 +111,7 @@ const About = () =>{
                         Company Branches
                     </th>
                     <td class="px-6 py-4 rounded-r-lg">
-                        01
+                        02
                     </td>
                 </tr>
                 <tr class="bg-gray-100 border-b border-gray-200 hover:bg-gray-200">
@@ -132,7 +132,7 @@ const About = () =>{
                         GST No
                     </th>
                     <td class="px-6 py-4 rounded-r-lg">
-                        akdakd
+                        24AHVPK9629H2ZO
                     </td>
                 </tr>
                 <tr class="bg-gray-100 border-b border-gray-200 hover:bg-gray-200">

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import ReactImageMagnify from "react-image-magnify";
 import { Link } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 import { motion } from "framer-motion";
 import { products, relatedProducts } from "./Products";
 import {
@@ -28,7 +29,15 @@ const ProductDetails = () => {
   const [activeTab, setActiveTab] = useState("description");
   const [isShareMenuOpen, setIsShareMenuOpen] = useState(false);
   const [isContactFormOpen, setIsContactFormOpen] = useState(false); // New state for the popup
-
+  function ScrollToTop() {
+    const location = useLocation();
+    
+    React.useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [location.pathname]);
+    
+    return null;
+  }
   if (!product) {
     return <div>Product not found</div>;
   }
@@ -62,6 +71,8 @@ const ProductDetails = () => {
   };
   return (
     <>
+          <ScrollToTop />
+
      <Helmet>
         <title>{`${product.name} | Divya Enterprise`}</title>
         <meta name="description" content={product.description.slice(0, 160)} />

@@ -10,12 +10,12 @@ const ContactForm = () => {
   });
 
   const [errors, setErrors] = useState({});
-
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const products = [
     "Condonson Oil",
     "Furnace Oil",
-    "Mix Hydrocarbon Oil",
-    "MTO",
+    "Mix Hydrocarbon Oil (MHO)",
+    "Mineral Turpentine Oil (MTO)",
     "Industrial Solvent",
     "Distillate Oil"
   ];
@@ -50,6 +50,7 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
+      setIsSubmitting(true);
       try {
         const response = await fetch('https://divya-enterprise-backend.vercel.app/api/contact/submit', {
           method: 'POST',
@@ -76,6 +77,9 @@ const ContactForm = () => {
       } catch (error) {
         console.error('Error submitting form:', error);
         toast.error("There was an error submitting your message. Please try again.");
+      }
+      finally {
+        setIsSubmitting(false);
       }
     }
   };
@@ -152,13 +156,24 @@ const ContactForm = () => {
             {errors.message && <p className="mt-1 text-2xl text-red-500">{errors.message}</p>}
           </div>
           <div>
-            <button
-              type="submit"
-              className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-2xl font-medium text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
-              style={{backgroundColor: "#f8ab12"}}
-            >
-              Send Message
-            </button>
+          <button
+  type="submit"
+  className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-2xl font-medium text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 disabled:opacity-50"
+  style={{backgroundColor: "#f8ab12"}}
+  disabled={isSubmitting}
+>
+  {isSubmitting ? (
+    <>
+      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+      </svg>
+      Sending...
+    </>
+  ) : (
+    'Send Message'
+  )}
+</button>
           </div>
         </form>
       </div>

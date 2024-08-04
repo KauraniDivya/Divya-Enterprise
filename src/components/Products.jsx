@@ -13,7 +13,7 @@ const products = [
   {
     id: 1,
     name: "Condonson Oil",
-    description: "Premium base oil with excellent viscosity and thermal stability, used to enhance engine and machinery performance. This high-quality oil is designed to provide superior lubrication and protection for a wide range of industrial applications.",
+    description: "Premium base oil with excellent viscosity and thermal stability, used to enhance engine and machinery performance. ",
     images: [product1],
     icon: "🔧",
     Use: "Paint, Engine lubrication",

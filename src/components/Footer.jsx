@@ -139,7 +139,7 @@ const Footer = () =>{
   <div class="container">
 
     <p class="copyright">
-      Copyright 2022 All Rights Reserved by <a href="#" class="copyright-link">Divya Enterprise</a>
+      Copyright {new Date().getFullYear()} All Rights Reserved by <a href="#" class="copyright-link">Divya Enterprise</a>
     </p>
 
   </div>
