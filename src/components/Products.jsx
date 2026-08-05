@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FiShoppingCart, FiStar } from 'react-icons/fi';
+import { FiShoppingCart } from 'react-icons/fi';
 import product1 from "./images/product-1.png";
 import product2 from "./images/product-2.png";
 import product3 from "./images/product-3.png";
@@ -222,4 +222,3 @@ const Products = () => {
 
 export { products, relatedProducts };  // Export the products array
 export default Products;
-

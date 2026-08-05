@@ -24,8 +24,7 @@ const ProductDetails = () => {
   const { id } = useParams();
   const product = products.find((p) => p.id === parseInt(id));
 
-  const [selectedImage, setSelectedImage] = useState(0);
-  const [quantity, setQuantity] = useState(1);
+  const selectedImage = 0;
   const [activeTab, setActiveTab] = useState("description");
   const [isShareMenuOpen, setIsShareMenuOpen] = useState(false);
   const [isContactFormOpen, setIsContactFormOpen] = useState(false); // New state for the popup
@@ -189,7 +188,7 @@ const ProductDetails = () => {
               <p>{product.description} </p>
               <h2 className="font-bold text-3xl my-4">Product Details</h2>
 
-              <a href="#" className="text-blue-500">
+              <a href="#product-information" className="text-blue-500">
                 Click to view more
               </a>
               {/* Add to Cart and Buy Now buttons */}
@@ -248,6 +247,7 @@ const ProductDetails = () => {
 
         {/* Product Information Tabs */}
         <motion.div
+          id="product-information"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 1 }}
