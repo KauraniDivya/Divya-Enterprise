@@ -119,7 +119,7 @@ const About = () =>{
                         Annual Turnover
                     </th>
                     <td class="px-6 py-4 rounded-r-lg">
-                        Above INR Rs 5 CR
+                        Above INR Rs 15 CR
                     </td>
                 </tr>
                 <tr class="text-black uppercase">
